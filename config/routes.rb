@@ -1,4 +1,11 @@
 Timestampz2::Application.routes.draw do
+
+  root to: 'groups#index'
+
+  resources :students
+  resources :groups
+  resources :assignments
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

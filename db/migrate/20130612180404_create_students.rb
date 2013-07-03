@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :first_name, :null => false
       t.string :last_name, :null => false
       t.string :school, :null => false
-      t.string :grade, :null => false
+      t.string :grade_level, :null => false
       t.string :homeroom_teacher
 
       t.timestamps

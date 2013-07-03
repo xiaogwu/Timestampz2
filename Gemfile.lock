@@ -29,10 +29,10 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.4)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     awesome_print (1.1.0)
-    bootstrap-rails (0.0.7)
-      railties (~> 3.1)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.0.4)
@@ -136,6 +136,7 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails-boilerplate (0.1.9)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -204,11 +205,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   awesome_print
-  bootstrap-rails
   bootstrap-sass
   capybara
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   factory_girl_rails
   guard
   guard-rspec
@@ -222,11 +223,12 @@ DEPENDENCIES
   pry
   pry-rails
   quiet_assets
-  rails (= 3.2.13)
+  rails
+  rails-boilerplate
   rspec-rails
-  sass-rails (~> 3.2.3)
+  sass-rails
   shoulda-matchers
   simplecov
   spork
   thin
-  uglifier (>= 1.0.3)
+  uglifier

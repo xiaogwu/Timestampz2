@@ -1,0 +1,27 @@
+%h2= @group.teacher
+
+%table.table.table-striped#show_class_table
+  %thead
+    %tr
+      %th
+        Students
+      %th
+        %span.label.label-info
+          %i.icon-edit
+          =link_to "edit class", edit_group_path(@group)
+        &nbsp;
+        %span.label.label-important
+          %i.icon-trash
+          =link_to "delete class", group_path(@group), method: :delete, data: {confirm: "Are you sure?"}
+  -@group.students.by_last_name.each do |student|
+    %tr
+      %td=student.first_name + " " + student.last_name
+      %td
+        =form_for student do |f|
+          =f.collection_select(:group_id, Group.find(:all), :id, :teacher_name,  :selected => nil, :include_blank => 'Switch class')
+          = f.submit "Save", :class => "btn-mini"
+      %td
+        %span.label.label-important
+          %i.icon-trash
+          = link_to "delete", student_path(student), method: :delete, data: {confirm: "Are you sure?"}
+

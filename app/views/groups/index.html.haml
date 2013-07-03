@@ -1,0 +1,13 @@
+%h1 Afterschool Group List
+%ul.nav.nav-list
+  %li.divider
+
+.row
+  .span2
+    - @groups.each do |group|
+      %span.label
+        = link_to group.teacher, group_path(group), method: :get, class: "group_links"
+      %br
+
+%ul.nav.nav-list
+  %li.divider

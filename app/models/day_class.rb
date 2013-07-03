@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: day_classes
+#
+#  id         :integer          not null, primary key
+#  teacher    :string(255)      not null
+#  period     :string(255)      not null
+#  school     :string(255)      not null
+#  subject    :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class DayClass < ActiveRecord::Base
   attr_accessible :period, :school, :subject, :teacher
 

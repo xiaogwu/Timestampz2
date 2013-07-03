@@ -62,6 +62,9 @@ module Timestampz2
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    #Allow the compiling of Twitter Bootstrap
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

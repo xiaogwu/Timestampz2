@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612181501) do
+ActiveRecord::Schema.define(:version => 20130620051440) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name",       :null => false
@@ -30,16 +30,41 @@ ActiveRecord::Schema.define(:version => 20130612181501) do
   end
 
   create_table "groups", :force => true do |t|
-    t.string   "teacher",    :null => false
-    t.string   "name",       :null => false
+    t.string   "teacher",     :null => false
+    t.string   "name",        :null => false
+    t.string   "grade_level"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "student_assignments", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "assignment_id"
+    t.datetime "completion_date"
+    t.string   "comment"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "student_day_classes", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "day_class_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "student_groups", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "students", :force => true do |t|
-    t.string   "name",             :null => false
+    t.string   "first_name",       :null => false
+    t.string   "last_name",        :null => false
     t.string   "school",           :null => false
-    t.string   "grade",            :null => false
+    t.string   "grade_level",      :null => false
     t.string   "homeroom_teacher"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false

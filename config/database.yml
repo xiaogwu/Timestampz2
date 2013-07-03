@@ -17,7 +17,6 @@ development:
   encoding: unicode
   database: Timestampz2_development
   pool: 5
-  username: Timestampz2
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,7 +42,6 @@ test:
   encoding: unicode
   database: Timestampz2_test
   pool: 5
-  username: Timestampz2
   password:
 
 production:
@@ -51,5 +49,4 @@ production:
   encoding: unicode
   database: Timestampz2_production
   pool: 5
-  username: Timestampz2
   password:
