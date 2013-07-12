@@ -13,7 +13,7 @@
 #
 
 class Student < ActiveRecord::Base
-  attr_accessible :grade, :homeroom_teacher, :first_name, :last_name, :school
+  attr_accessible :grade_level, :homeroom_teacher, :first_name, :last_name, :school
 
   has_many :student_groups
   has_many :groups, through: :student_groups
@@ -21,6 +21,11 @@ class Student < ActiveRecord::Base
   has_many :assignments, through: :student_assignments
   has_many :student_day_classes
   has_many :day_classes, through: :student_day_classes
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_presence_of :school
+  validates_presence_of :grade_level
 
   scope :by_last_name, order("last_name")
 end

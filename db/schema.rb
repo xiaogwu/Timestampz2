@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130713211959) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "groups", force: true do |t|
     t.string   "teacher_first_name", null: false
     t.string   "teacher_last_name",  null: false
@@ -40,6 +41,15 @@ ActiveRecord::Schema.define(version: 20130713211959) do
     t.string   "grade_level"
     t.datetime "created_at"
     t.datetime "updated_at"
+=======
+  create_table "groups", :force => true do |t|
+    t.string   "name",               :null => false
+    t.string   "grade_level"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "teacher_first_name", :null => false
+    t.string   "teacher_last_name",  :null => false
+>>>>>>> built initial groups controller, views, models, and validations.
   end
 
   create_table "student_assignments", force: true do |t|
