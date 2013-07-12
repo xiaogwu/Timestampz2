@@ -2,8 +2,12 @@
   body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-.group_links a:visited, a:link {
+a:visited.button_link {
   text-decoration: none;
   color: white;
 }
 
+a:link.button_link {
+  text-decoration: none;
+  color: white;
+}

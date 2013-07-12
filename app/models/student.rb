@@ -3,9 +3,10 @@
 # Table name: students
 #
 #  id               :integer          not null, primary key
-#  name             :string(255)      not null
+#  first_name       :string(255)      not null
+#  last_name        :string(255)      not null
 #  school           :string(255)      not null
-#  grade            :string(255)      not null
+#  grade_level      :string(255)      not null
 #  homeroom_teacher :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

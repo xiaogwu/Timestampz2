@@ -1,0 +1,21 @@
+= form_for @group, :html => {:multipart => true } do |f|
+  - if @group.errors.any?
+    #error_explanation
+      .alert.alert-error
+        ="The form contains #{ pluralize(@group.errors.count, "error") }"
+      %ul
+        -@group.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :name, "Group name"
+  = f.text_field :name
+  %br
+  = f.label :teacher_first_name, "Teacher First Name"
+  = f.text_field :teacher_first_name
+  %br
+  = f.label :teacher_last_name, "Teacher Last Name"
+  = f.text_field :teacher_last_name
+  %br
+  = f.label :grade_level, "Grade"
+  = f.select(:grade_level, [['6th Grade', '6th Grade'], ['7th Grade', '7th Grade'], ['8th Grade', '8th Grade']])
+  %br
+  = f.submit "Create Class", :class => "btn btn-large btn-success"

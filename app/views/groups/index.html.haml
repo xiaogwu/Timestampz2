@@ -3,11 +3,42 @@
   %li.divider
 
 .row
-  .span2
-    - @groups.each do |group|
-      %span.label
-        = link_to group.teacher, group_path(group), method: :get, class: "group_links"
-      %br
+  .span7
+    %h3 Teacher
+    %table.table.table-striped
+      %tr
+        %th Teacher
+        %th Group Name
+        %th Grade
+        %th Enter Class
+        %th Edit Class
+      - @groups.each do |group|
+        %tr
+          %td
+            = link_to "#{group.teacher_first_name} #{group.teacher_last_name}", group_path(group), method: :get
+          %td 
+            = group.name
+          %td
+            = group.grade_level
+          %td Stuff
+          %td
+            %span.label.label-info
+              %i.icon-edit
+              =link_to "edit class", edit_group_path(group), class: "button_link"
+        / %td
+        /   -if afterschool_class.sessions.last && afterschool_class.current_session?
+        /     %span.label.label-info
+        /       =link_to "Enter class" , afterschool_class_session_path(afterschool_class.id, afterschool_class.sessions.find_by_date(Time.zone.now.to_date))
+        /     %td
+        /       %span.label.label-inverse
+        /         =link_to "Current Status" , afterschool_class_session_path(afterschool_class.id, :id => afterschool_class.sessions.find_by_date(Time.zone.now.to_date)), remote: true
+        /   -else
+        /     %span.label.label-success
+        /       =link_to "Start class" , afterschool_class_sessions_path(afterschool_class.id) ,  method: :post
+        /       %td
+        /         %span.label
+        /           ="Not In Session"
+
 
 %ul.nav.nav-list
   %li.divider
