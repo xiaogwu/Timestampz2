@@ -37,7 +37,9 @@ describe AssignmentsController do
     context 'it saves to the database' do
 
       it 'creates a new assignment' do
-        expect{post :create, assignment: @assignment_hash }.to change{Assignment.all.count}.by(1)
+        expect{
+          post :create, assignment: @assignment_hash 
+        }.to change{Assignment.count}.by(1)
       end
 
       it 'redirects to index' do
@@ -53,6 +55,37 @@ describe AssignmentsController do
       end
     end
 
+  end
+
+  describe '#update' do
+
+    it 'changes assignments attributes' do
+      assignment_attributes = {
+        name: 'new name'
+      }
+      post :update, id: assignment.id, assignment: assignment_attributes
+      Assignment.first.name.should == 'new name'
+    end
+
+    it 'redirects to index' do
+      post :update, id: assignment.id
+      expect(response).to redirect_to(assignments_path)
+    end
+  end
+
+  describe '#destroy'do
+
+    it 'deletes an assignment' do
+      assignment
+      expect{
+        delete :destroy, id: assignment.id
+      }.to change{Assignment.count}.by(-1)
+    end
+
+    it 'redirects to index' do
+      delete :destroy, id: assignment.id
+      expect(response).to redirect_to(assignments_path)
+    end
   end
 
 end
