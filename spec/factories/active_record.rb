@@ -16,8 +16,8 @@ FactoryGirl.define do
   factory :day_class do
   	teacher "Felix"
   	period "4"
-  	school "Middle" 
   	subject "Math"
+    association :school
   end
 
   factory :user do
@@ -26,4 +26,7 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :school do
+    name "Sequoia"
+  end
 end

@@ -11,45 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130713211959) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130716220721) do
 
   create_table "assignments", force: true do |t|
     t.string   "name",         null: false
     t.date     "due_date",     null: false
     t.integer  "day_class_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "day_classes", force: true do |t|
     t.string   "teacher",    null: false
     t.string   "period",     null: false
-    t.string   "school",     null: false
     t.string   "subject",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "school_id",  null: false
   end
 
-<<<<<<< HEAD
   create_table "groups", force: true do |t|
-    t.string   "teacher_first_name", null: false
-    t.string   "teacher_last_name",  null: false
     t.string   "name",               null: false
     t.string   "grade_level"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "teacher_first_name", null: false
+    t.string   "teacher_last_name",  null: false
+  end
+
+  create_table "schools", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-=======
-  create_table "groups", :force => true do |t|
-    t.string   "name",               :null => false
-    t.string   "grade_level"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "teacher_first_name", :null => false
-    t.string   "teacher_last_name",  :null => false
->>>>>>> built initial groups controller, views, models, and validations.
   end
 
   create_table "student_assignments", force: true do |t|
@@ -57,32 +50,32 @@ ActiveRecord::Schema.define(version: 20130713211959) do
     t.integer  "assignment_id"
     t.datetime "completion_date"
     t.string   "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "student_day_classes", force: true do |t|
     t.integer  "student_id"
     t.integer  "day_class_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "student_groups", force: true do |t|
     t.integer  "student_id"
     t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: true do |t|
     t.string   "first_name",       null: false
     t.string   "last_name",        null: false
-    t.string   "school",           null: false
     t.string   "grade_level",      null: false
     t.string   "homeroom_teacher"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "school_id",        null: false
   end
 
   create_table "users", force: true do |t|

@@ -40,7 +40,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
   <!-- Add your site or application content here -->
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
           <%= link_to "TimeStampz", root_path, class: 'brand' %>
@@ -68,7 +68,13 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle"
             data-toggle="dropdown">
-
+              School
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All Schools", schools_path %></li>
+              <li><%= link_to "Create School", new_school_path %></li>
+            </ul>
           </li>
         </ul>
 

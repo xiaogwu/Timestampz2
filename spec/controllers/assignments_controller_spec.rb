@@ -10,17 +10,17 @@ describe AssignmentsController do
   end
 
   describe '#index' do
-  	before :each do
-  		get :index
-  	end
+    before :each do
+      get :index
+    end
 
-  	it 'assigns assignments' do
-  		expect(assigns(:assignments)).to eq([assignment])
-  	end
+    it 'assigns assignments' do
+      expect(assigns(:assignments)).to eq([assignment])
+    end
 
-  	it 'renders index page' do
-  		expect(response).to render_template("index")
-  	end
+    it 'renders index page' do
+      expect(response).to render_template("index")
+    end
   end
 
   describe '#create' do

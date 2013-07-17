@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)      not null
+#  grade_level        :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  teacher_first_name :string(255)      not null
+#  teacher_last_name  :string(255)      not null
+#
+
 require 'spec_helper'
 
 describe Group do

@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
     redirect_to root_path
   end
 
-private
+  private
   def setup
     @group = Group.find(params[:id])
   end

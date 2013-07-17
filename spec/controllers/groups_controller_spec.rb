@@ -23,7 +23,7 @@ describe GroupsController do
 
       it 'redirects' do
         post('create', @params)
-        response.should be_redirect
+        response.should redirect_to(root_path)
       end
 
       it 'saves a Group object' do
@@ -63,15 +63,14 @@ describe GroupsController do
   describe "#show" do
     before(:each) do
       Group.stub(:find).and_return(group)
+      get('show', id:group.object_id)
     end
 
     it "returns success" do
-      get('show', id:group.object_id)
       response.should be_successful
     end
 
     it "assigns @group" do
-      get('show', id:group.object_id )
       assigns(:group).should == group
     end
   end
@@ -79,15 +78,14 @@ describe GroupsController do
   describe "#edit" do
     before(:each) do
       Group.stub(:find).and_return(group)
+      get('edit', id:group.object_id)
     end
 
     it "returns success" do
-      get('edit', id:group.object_id)
       response.should be_successful
     end
 
     it "assigns @group" do
-      get('edit', id:group.object_id)
       assigns(:group).should == group
     end
   end
@@ -98,13 +96,15 @@ describe GroupsController do
     end
 
     context 'successful update' do
-      it 'redirects upon success' do
+      before(:each) do
         put('update', id:group.object_id)
+      end
+      
+      it 'redirects upon success' do
         response.should be_redirect
       end
 
       it 'flashes a success message' do
-        put('update', id: group.object_id)
         flash[:success].should_not be_blank
       end
     end

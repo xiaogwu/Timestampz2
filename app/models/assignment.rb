@@ -2,11 +2,12 @@
 #
 # Table name: assignments
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  due_date   :date             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string(255)      not null
+#  due_date     :date             not null
+#  day_class_id :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class Assignment < ActiveRecord::Base

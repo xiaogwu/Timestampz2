@@ -7,8 +7,8 @@
 #  grade_level        :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  teacher_first_name :string(255)
-#  teacher_last_name  :string(255)
+#  teacher_first_name :string(255)      not null
+#  teacher_last_name  :string(255)      not null
 #
 
 class Group < ActiveRecord::Base
