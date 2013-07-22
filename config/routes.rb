@@ -16,6 +16,8 @@ Timestampz2::Application.routes.draw do
 
   resources :students
 
+  get '/students/:id/reports' => 'reports#student'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
