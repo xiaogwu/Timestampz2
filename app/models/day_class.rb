@@ -18,4 +18,5 @@ class DayClass < ActiveRecord::Base
   has_many :students, through: :student_day_class
   has_many :assignments
   belongs_to :school
+  belongs_to :teacher
 end

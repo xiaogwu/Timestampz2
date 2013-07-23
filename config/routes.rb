@@ -7,6 +7,7 @@ Timestampz2::Application.routes.draw do
   resources :groups
   resources :assignments
   resources :schools
+  resources :teachers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

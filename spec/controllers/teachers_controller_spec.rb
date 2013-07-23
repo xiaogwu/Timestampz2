@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe SchoolsController do
-  let(:school) { FactoryGirl.create(:school) }
+describe TeachersController do
+  let(:teacher) { FactoryGirl.create(:teacher) }
   let(:user) { FactoryGirl.create(:user) }
 
   before(:each) do
@@ -17,17 +17,17 @@ describe SchoolsController do
 
   describe '#create' do
     before(:each) do
-      @params = { school: { id: school.id, name: "Sequoia" }}
+      @params = { teacher: { id: teacher.id, name: "Sequoia" }}
     end
 
     context 'with correct params' do
       it 'redirects' do
         post(:create, @params)
-        response.should redirect_to(new_teacher_path)
+        response.should redirect_to(new_day_classes_path)
       end
 
       it 'saves to the database' do
-        expect{ post :create, @params }.to change{School.count}.by(1)
+        expect{ post :create, @params }.to change{Teacher.count}.by(1)
       end
 
       it 'has sucessful flash notice' do
@@ -38,7 +38,7 @@ describe SchoolsController do
 
     context 'incorrect params' do
       it 'renders new' do
-        School.any_instance.should_receive(:save).and_return(nil)
+        Teacher.any_instance.should_receive(:save).and_return(nil)
         post('create')
         response.should render_template 'new'
       end
@@ -51,52 +51,52 @@ describe SchoolsController do
       response.should be_successful
     end
 
-    it "assigns @schools" do
-      mock_schools = double("school")
-      School.stub(:all).and_return(mock_schools)
+    it "assigns @teachers" do
+      mock_teachers = double("teacher")
+      Teacher.stub(:all).and_return(mock_teachers)
       get('index')
-      assigns(:schools).should == mock_schools
+      assigns(:teachers).should == mock_teachers
     end
   end
 
   describe "#show" do
     before(:each) do
-      School.stub(:find).and_return(school)
-      get('show', id:school.object_id)
+      Teacher.stub(:find).and_return(teacher)
+      get('show', id:teacher.object_id)
     end
 
     it "returns success" do
       response.should be_successful
     end
 
-    it "assigns @school" do
-      assigns(:school).should == school
+    it "assigns @teacher" do
+      assigns(:teacher).should == teacher
     end
   end
 
   describe "#edit" do
     before(:each) do
-      School.stub(:find).and_return(school)
-      get('edit', id:school.object_id)
+      Teacher.stub(:find).and_return(teacher)
+      get('edit', id:teacher.object_id)
     end
 
     it "returns success" do
       response.should be_successful
     end
 
-    it "assigns @school" do
-      assigns(:school).should == school
+    it "assigns @teacher" do
+      assigns(:teacher).should == teacher
     end
   end
 
   describe 'update' do
     before(:each) do
-      School.stub(:find).and_return(school)
+      Teacher.stub(:find).and_return(teacher)
     end
 
     context 'successful update' do
       before(:each) do
-        put('update', id:school.object_id)
+        put('update', id:teacher.object_id)
       end
       
       it 'redirects upon success' do
@@ -110,8 +110,8 @@ describe SchoolsController do
 
     context 'unsuccessful update' do
       it 'renders edit' do
-        School.any_instance.stub(:update_attributes).and_return(nil)
-        put('update', id: school.object_id, school: { name: ""})
+        Teacher.any_instance.stub(:update_attributes).and_return(nil)
+        put('update', id: teacher.object_id, teacher: { name: ""})
         response.should render_template 'edit'
       end
     end
@@ -119,18 +119,18 @@ describe SchoolsController do
 
   describe "#destroy" do
     before(:each) do
-      School.stub(:find).and_return(school)
+      Teacher.stub(:find).and_return(teacher)
     end
 
     it "redirects upon success" do
-      delete('destroy', id:school.object_id)
+      delete('destroy', id:teacher.object_id)
       response.should be_redirect
     end
 
-    it "destroys the school object" do
-      count = School.count
-      delete('destroy', id:school.object_id)
-      School.count.should == count - 1
+    it "destroys the teacher object" do
+      count = Teacher.count
+      delete('destroy', id:teacher.object_id)
+      Teacher.count.should == count - 1
     end
-  end  
+  end
 end
