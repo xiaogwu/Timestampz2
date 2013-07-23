@@ -1,0 +1,12 @@
+= form_for @school, :html => {:multipart => true } do |f|
+  - if @school.errors.any?
+    #error_explanation
+      .alert.alert-error
+        ="The form contains #{ pluralize(@school.errors.count, "error") }"
+      %ul
+        -@gschool.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :name, "School name"
+  = f.text_field :name
+  %br
+  = f.submit "Create School", :class => "btn btn-large btn-success"

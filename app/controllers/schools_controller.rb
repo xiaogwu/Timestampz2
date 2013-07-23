@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
     @school = School.new(params[:school])
     if @school.save
       flash[:success] = "School successfully created!"
-      redirect_to schools_path
+      redirect_to new_teacher_path
     else
       render :new
     end

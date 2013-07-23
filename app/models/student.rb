@@ -21,7 +21,7 @@ class Student < ActiveRecord::Base
   has_many :assignments, through: :student_assignments
   has_many :student_day_classes
   has_many :day_classes, through: :student_day_classes
-  belongs_to :school
+  belongs_to :institution
 
   validates_presence_of :first_name
   validates_presence_of :last_name

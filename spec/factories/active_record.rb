@@ -1,12 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :group do
-    name "Group 1"
-    teacher_first_name "Felix"
-    teacher_last_name "Tsai"
-  end
-
   factory :assignment do
   	name "Assignment 1"
   	due_date Time.now + 2.days
@@ -14,9 +8,25 @@ FactoryGirl.define do
   end
 
   factory :day_class do
-  	teacher "Felix"
   	period "4"
   	subject "Math"
+    association :school, strategy: :build
+    association :teacher
+  end
+
+  factory :group do
+    name "Group 1"
+    teacher_first_name "Felix"
+    teacher_last_name "Tsai"
+  end
+
+  factory :school do
+    name "Sequoia"
+  end
+
+  factory :teacher do
+    first_name "Fred"
+    last_name "Flintstone"
     association :school
   end
 
@@ -24,9 +34,5 @@ FactoryGirl.define do
     email "fake_email@gmail.com"
     password 'password'
     password_confirmation 'password'
-  end
-
-  factory :school do
-    name "Sequoia"
   end
 end
