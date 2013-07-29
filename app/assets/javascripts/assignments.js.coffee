@@ -5,4 +5,6 @@
 $ ->
   $('#showcal').datepicker({ dateFormat: 'yy-mm-dd' })
   count = '1'
-  $('.add-assignment-form').on('click', )
+  $('.add-assignment-form').on('click', ->
+    $(@).after("<input id='assignment_due_date_#{count}' id='assignment_#{count}_due_date")
+    )
