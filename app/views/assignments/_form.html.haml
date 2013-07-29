@@ -1,9 +1,10 @@
 = form_for @assignment do |f|
-  = f.label :name
+  = f.label :name, 'Assignment Name'
   = f.text_field :name
   = f.label :class
   = f.select(:day_class_id, @day_classes)
   = f.label :due_date
   = f.text_field :due_date, id: 'showcal'
   %br
+  
   = f.submit class: "btn btn-large btn-success"

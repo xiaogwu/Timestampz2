@@ -4,3 +4,5 @@
 
 $ ->
   $('#showcal').datepicker({ dateFormat: 'yy-mm-dd' })
+  count = '1'
+  $('.add-assignment-form').on('click', )

@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    @assignment = Assignment.new(params[:assignment])
+    @assignment = Assignment.build_many(params[:assignment])
     @assignment.day_class_id = params[:assignment][:day_class_id]
     if @assignment.save
       redirect_to assignments_path
