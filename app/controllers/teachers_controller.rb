@@ -1,18 +1,26 @@
 class TeachersController < ApplicationController
-  before_action :setup, only: [:show, :edit, :update, :destroy]
 
   def new
     @teacher = Teacher.new
+    @school = School.find(params[:school_id])
   end
 
   def create
-    @teacher = Teacher.new(params[:teacher])
-    if @teacher.save
-      flash[:success] = "Teacher successfully created!"
-      redirect_to new_day_classes_path
-    else
-      render :new
+    @errors = []
+    params[:teacher].each_value do |attrs|
+      @teacher = Teacher.new(attrs)
+      @teacher.school_id = params[:school_id]
+      @errors += @teacher.errors.full_messages unless @teacher.save 
     end
+    if @errors.empty?
+      flash[:success] = "Teachers successfully created!"
+      redirect_to new_school_day_class_path
+    else
+      @errors.uniq!
+      flash[:errors] = "Some teachers fields had errors. Please check the School tab
+                    to see if any teachers were not added."
+      redirect_to new_school_day_class_path
+    end  
   end
 
   def index
@@ -20,12 +28,15 @@ class TeachersController < ApplicationController
   end
 
   def show
+    @teacher = Teacher.find(params[:id])
   end
 
   def edit
+    @teacher = Teacher.find(params[:id])
   end
 
   def update
+    @teacher = Teacher.find(params[:id])
     if @teacher.update_attributes(params[:teacher])
       flash[:success] = 'Teacher successfully updated'
       redirect_to teachers_path
@@ -35,13 +46,8 @@ class TeachersController < ApplicationController
   end
 
   def destroy
+    @teacher = Teacher.find(params[:id])
     @teacher.destroy
     redirect_to teachers_path
-  end
-
-  private
-
-  def setup
-    @teacher = Teacher.find(params[:id])
   end
 end

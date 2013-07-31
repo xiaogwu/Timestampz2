@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
     @school = School.new(params[:school])
     if @school.save
       flash[:success] = "School successfully created!"
-      redirect_to new_teacher_path
+      redirect_to new_school_teacher_path(@school)
     else
       render :new
     end
@@ -20,12 +20,15 @@ class SchoolsController < ApplicationController
   end
 
   def show
+    @school = School.find(params[:id])
   end
 
   def edit
+    @school = School.find(params[:id])
   end
 
   def update
+    @school = School.find(params[:id])
     if @school.update_attributes(params[:school])
       flash[:success] = 'School successfully updated'
       redirect_to schools_path
@@ -35,6 +38,7 @@ class SchoolsController < ApplicationController
   end
 
   def destroy
+    @school = School.find(params[:id])
     @school.destroy
     redirect_to schools_path
   end

@@ -1,6 +1,4 @@
 class GroupsController < ApplicationController
-  before_action :setup, only: [:show, :edit, :update, :destroy]
-
   def new
     @group = Group.new
   end
@@ -20,12 +18,15 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def update
+    @group = Group.find(params[:id])
     if @group.update_attributes(params[:group])
       flash[:success] = "Group successfully updated."
       redirect_to root_path
@@ -35,12 +36,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
     redirect_to root_path
-  end
-
-  private
-  def setup
-    @group = Group.find(params[:id])
   end
 end

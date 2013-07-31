@@ -6,12 +6,13 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = Assignment.new
-    @day_classes = DayClass.all.map{|c| ["#{c.subject}, period #{c.period}, #{c.school}", c.id] }
+    @day_classes = DayClass.all
+    @count = 0
   end
 
   def create
-    @assignment = Assignment.new(params[:assignment])
-    @assignment.day_class_id = params[:assignment][:day_class_id]
+    @assignment = Assignment.new(params[:assignment]['0'])
+    @assignment.day_class_id = params[:assignment]['0'][:day_class_id]
     if @assignment.save
       flash[:success] = "Assignment successfully created!"
       redirect_to assignments_path
@@ -40,5 +41,12 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @assignment.delete
     redirect_to assignments_path
+  end
+
+  def add_form
+    @day_classes = DayClass.all
+    respond_to do |format|
+      format.js
+    end
   end
 end

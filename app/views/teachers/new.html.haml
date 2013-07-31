@@ -1,9 +1,16 @@
-%h1 Add Teachers
+%h1 Add Teachers to School
+
+
+= form_tag(school_teachers_path(@school))
+
+= render partial: 'form', locals: { count: @count}
+
 %div
-  .add-assignment-form
-    = link_to '#' do
+  #add-teacher-form
+    = link_to '#', class: 'add_form' do
       %i.icon-plus-sign
       %span
         Add New Teacher
   %br
-  = render 'form'
+
+= submit_tag "Add Teachers", class: "btn btn-large btn-success", id: "submit_btn"

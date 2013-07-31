@@ -3,11 +3,18 @@ Timestampz2::Application.routes.draw do
   devise_for :users
   root to: 'groups#index'
 
-  resources :students
-  resources :groups
   resources :assignments
-  resources :schools
-  resources :teachers
+  match '/assignments/add_form', to: 'assignments#add_form', via: :get
+
+  
+  resources :groups
+
+  resources :schools, shallow: true do
+    resources :teachers
+    resources :day_classes
+  end
+
+  resources :students
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

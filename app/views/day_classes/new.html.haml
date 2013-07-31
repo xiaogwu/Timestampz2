@@ -1,0 +1,17 @@
+%h2 Add Classes to School
+
+= form_tag(school_day_classes_path(@school))
+- @teachers.each do |teacher|
+  %h4
+    = "#{teacher.first_name} #{teacher.last_name}"
+  = label_tag :subject
+  = select_tag :subject, options_for_select([['ELA', 'ELA'], ['Science', 'Science'], ['Math', 'Math'], ['Social Studies', 'Social Studies']])
+  = label_tag :period
+  = select_tag :period, options_for_select([['1st', '1st'], ['2nd', '2nd'], ['3rd', '3rd'], ['4th', '4th']])
+
+  %div.add-class-form
+    = link_to '#', class: 'add_form' do
+      %i.icon-plus-sign
+      %span
+        Add Another Class
+  %br

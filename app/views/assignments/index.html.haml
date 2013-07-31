@@ -2,16 +2,21 @@
 %ul.nav.nav-list
   %li.divider
 
-%table.table.table-striped
-	%tr
-		%th Name
-		%th Due Date
-		%th
-	- @assignments.each do |assignment|
-		%tr
-			%td
-				= assignment.name
-			%td
-				= assignment.due_date
-			%td 
-				= button_to 'Delete', assignment_path(assignment), method: 'delete'
+.row
+  .span7
+    %table.table.table-striped
+      %tr
+        %th Name
+        %th Due Date
+        %th Class Assigned
+        %th
+        - @assignments.each do |assignment|
+          %tr
+            %td
+              = assignment.name
+            %td
+              = assignment.due_date.strftime('%m/%d/%y')
+            %td
+              = assignment.day_class.name
+            %td
+              = button_to 'Delete', assignment_path(assignment), method: 'delete', class: "btn btn-mini btn-danger"
