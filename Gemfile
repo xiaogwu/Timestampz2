@@ -56,4 +56,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simplecov', :require => false
+  gem "rails-erd"
 end
