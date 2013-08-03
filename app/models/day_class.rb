@@ -12,7 +12,7 @@
 #
 
 class DayClass < ActiveRecord::Base
-  attr_accessible :period, :subject, :school_id, :teacher_id
+  attr_accessible :period, :subject, :name, :school_id, :teacher_id
 
   has_many :student_day_classes
   has_many :students, through: :student_day_class
@@ -20,7 +20,7 @@ class DayClass < ActiveRecord::Base
   belongs_to :school
   belongs_to :teacher
 
-  def name
+  def get_name
     "#{self.teacher.last_name}'s #{self.period} period #{self.subject}"
   end
 end

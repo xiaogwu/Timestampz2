@@ -23,13 +23,13 @@ class TeachersController < ApplicationController
     end  
   end
 
-  def index
-    @teachers = Teacher.all
-  end
+  # def index
+  #   @teachers = Teacher.all
+  # end
 
-  def show
-    @teacher = Teacher.find(params[:id])
-  end
+  # def show
+  #   @teacher = Teacher.find(params[:id])
+  # end
 
   def edit
     @teacher = Teacher.find(params[:id])
@@ -39,7 +39,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(params[:id])
     if @teacher.update_attributes(params[:teacher])
       flash[:success] = 'Teacher successfully updated'
-      redirect_to teachers_path
+      redirect_to schools_path
     else
       render 'edit'
     end
@@ -48,6 +48,6 @@ class TeachersController < ApplicationController
   def destroy
     @teacher = Teacher.find(params[:id])
     @teacher.destroy
-    redirect_to teachers_path
+    redirect_to schools_path
   end
 end

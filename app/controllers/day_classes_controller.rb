@@ -7,21 +7,8 @@ class DayClassesController < ApplicationController
   end
 
   def create
-    @errors = []
-    params[:day_class].each_value do |attrs|
-      @day_class = DayClass.new(attrs)
-      @day_class.school_id = params[:school_id]
-      @errors += @day_class.errors.full_messages unless @day_class.save 
-    end
-    if @errors.empty?
-      flash[:success] = "Classes successfully created!"
-      redirect_to schools_path
-    else
-      @errors.uniq!
-      flash[:errors] = "Some teachers fields had errors. Please check the School tab
-                    to see if any teachers were not added."
-      redirect_to schools_path
-    end
+    
+    redirect_to schools_path
   end
 
   def index

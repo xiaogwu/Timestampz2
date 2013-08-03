@@ -2,7 +2,7 @@
   %h4 Teacher
 
   = label_tag :first_name
-  = text_field_tag "teacher[0][first_name]"
+  = text_field_tag "teacher[0][first_name]", "#{@teacher.first_name}"
   = label_tag :last_name
-  = text_field_tag "teacher[0][last_name]"
+  = text_field_tag "teacher[0][last_name]", "#{@teacher.last_name}"
   %br
