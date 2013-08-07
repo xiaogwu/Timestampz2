@@ -3,6 +3,7 @@ require 'spec_helper'
 describe TeachersController do
   let(:teacher) { FactoryGirl.create(:teacher) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:school) { FactoryGirl.create(:school) }
 
   before(:each) do
     sign_in user
@@ -10,20 +11,20 @@ describe TeachersController do
 
   describe "#new" do
     it "returns success" do
-      get('new')
+      get(:new, school_id: school.id)
       response.should be_successful
     end
   end
 
   describe '#create' do
     before(:each) do
-      @params = { teacher: { id: teacher.id, name: "Sequoia" }}
+      @params = { teacher: { '0' => { id: teacher.id, name: "Sequoia" }}, school_id: school.id }
     end
 
     context 'with correct params' do
       it 'redirects' do
         post(:create, @params)
-        response.should redirect_to(new_day_classes_path)
+        response.should redirect_to(new_school_day_class_path)
       end
 
       it 'saves to the database' do
@@ -38,41 +39,42 @@ describe TeachersController do
 
     context 'incorrect params' do
       it 'renders new' do
-        Teacher.any_instance.should_receive(:save).and_return(nil)
-        post('create')
-        response.should render_template 'new'
+        Teacher.any_instance.stub(:save).and_return(nil)
+        Teacher.any_instance.stub_chain(:errors, :full_messages).and_return(["Error"])
+        post('create', @params)
+        flash[:errors].should_not be_blank
       end
     end
   end
 
-  describe '#index' do
-    it 'returns success' do
-      get('index')
-      response.should be_successful
-    end
+  # describe '#index' do
+  #   it 'returns success' do
+  #     get('index')
+  #     response.should be_successful
+  #   end
 
-    it "assigns @teachers" do
-      mock_teachers = double("teacher")
-      Teacher.stub(:all).and_return(mock_teachers)
-      get('index')
-      assigns(:teachers).should == mock_teachers
-    end
-  end
+  #   it "assigns @teachers" do
+  #     mock_teachers = double("teacher")
+  #     Teacher.stub(:all).and_return(mock_teachers)
+  #     get('index')
+  #     assigns(:teachers).should == mock_teachers
+  #   end
+  # end
 
-  describe "#show" do
-    before(:each) do
-      Teacher.stub(:find).and_return(teacher)
-      get('show', id:teacher.object_id)
-    end
+  # describe "#show" do
+  #   before(:each) do
+  #     Teacher.stub(:find).and_return(teacher)
+  #     get('show', id:teacher.object_id)
+  #   end
 
-    it "returns success" do
-      response.should be_successful
-    end
+  #   it "returns success" do
+  #     response.should be_successful
+  #   end
 
-    it "assigns @teacher" do
-      assigns(:teacher).should == teacher
-    end
-  end
+  #   it "assigns @teacher" do
+  #     assigns(:teacher).should == teacher
+  #   end
+  # end
 
   describe "#edit" do
     before(:each) do

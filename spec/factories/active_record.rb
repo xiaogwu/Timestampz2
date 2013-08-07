@@ -8,10 +8,10 @@ FactoryGirl.define do
   end
 
   factory :day_class do
-  	period "4"
+  	period "4th"
   	subject "Math"
     association :school, strategy: :build
-    association :teacher
+    association :teacher, strategy: :build
   end
 
   factory :group do

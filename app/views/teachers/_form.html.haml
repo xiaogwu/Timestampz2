@@ -1,7 +1,8 @@
-= form_for @teacher do |f|
-  = f.label :first_name
-  = f.text_field :first_name
-  = f.label :last_name
-  = f.text_field :last_name
+.teacher-form
+  %h4 Teacher
+
+  = label_tag :first_name
+  = text_field_tag "teacher[0][first_name]", "#{@teacher.first_name}"
+  = label_tag :last_name
+  = text_field_tag "teacher[0][last_name]", "#{@teacher.last_name}"
   %br
-  = f.submit "Add Teachers", class: "btn btn-large btn-success"

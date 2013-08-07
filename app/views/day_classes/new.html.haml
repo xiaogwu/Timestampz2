@@ -1,0 +1,16 @@
+%h2 Add Classes to School
+
+= form_tag(school_day_classes_path(@school))
+- @teachers.each do |teacher|
+  %h4
+    = "#{teacher.first_name} #{teacher.last_name}"
+  %h5 Period 1
+  = render partial: 'form', locals: { teacher_id: teacher.id }
+  %h5 Period 2
+  = render partial: 'form', locals: { teacher_id: teacher.id }
+  %h6 Period 3
+  = render partial: 'form', locals: { teacher_id: teacher.id }
+
+
+= submit_tag "Submit"
+

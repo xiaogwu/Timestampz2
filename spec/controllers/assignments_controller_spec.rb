@@ -36,7 +36,7 @@ describe AssignmentsController do
 
     context 'it saves to the database' do
 
-      it 'creates a new assignment' do
+      it 'creates a multiple assignments' do
         expect{
           post :create, assignment: @assignment_hash 
         }.to change{Assignment.count}.by(1)

@@ -3,6 +3,16 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('#showcal').datepicker({ dateFormat: 'yy-mm-dd' })
-  count = '1'
-  $('.add-assignment-form').on('click', )
+  $('.showcal').datepicker({ dateFormat: 'mm-dd-yy' })
+
+  # form = '.assignment-form'
+  # count = '1'
+
+  # $('.add-assignment-form').on('click', ->
+  #   $(form).after(
+  #     "<input class='showcal' type='text' name='assignment[#{count}][due_date]'>")
+  #   $(form).after("<label for='due_date'>Due date</label>")
+  #   $(form).after()
+
+  #   $('.showcal').datepicker({ dateFormat: 'mm-dd-yy' })
+  # )
