@@ -1,5 +1,14 @@
 %h1 
-	= @student.first_name
+	= @student.name
+	= "Grade #{@student.grade_level}"
+
+%h3 Assignments
+
+%h4
+	Complete:
+	= "#{@student.complete_percentage.to_i}" + "%"
+	Incomplete:
+	= "#{@student.incomplete_percentage.to_i}" + "%"
 .row
 	.span7
 		%table.table.table-striped
