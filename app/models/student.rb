@@ -29,12 +29,16 @@ class Student < ActiveRecord::Base
 
   scope :by_last_name, order("last_name")
 
-  def incomplete_assignments_percentage
+  def name
+    self.first_name + ' ' + self.last_name
+  end
+
+  def incomplete_percentage
     (student_assignments.incomplete.count.to_f / student_assignments.count.to_f) * 100
   end
 
-  def complete_assignments_percentage
-    100 - incomplete_assignments_percentage
+  def complete_percentage
+    100 - incomplete_percentage
   end
 
 end
