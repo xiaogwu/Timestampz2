@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
 
   def new
     @teacher = Teacher.new
-    @school = School.find(params[:school_id])
+    @school_id = params[:school]
   end
 
   def create
@@ -23,21 +23,13 @@ class TeachersController < ApplicationController
     end  
   end
 
-  # def index
-  #   @teachers = Teacher.all
-  # end
-
-  # def show
-  #   @teacher = Teacher.find(params[:id])
-  # end
-
   def edit
     @teacher = Teacher.find(params[:id])
   end
 
   def update
     @teacher = Teacher.find(params[:id])
-    if @teacher.update_attributes(params[:teacher])
+    if @teacher.update_attributes(params[:teacher]['0'])
       flash[:success] = 'Teacher successfully updated'
       redirect_to schools_path
     else

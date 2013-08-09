@@ -11,7 +11,7 @@
 #
 
 class Assignment < ActiveRecord::Base
-  attr_accessible :due_date, :name
+  attr_accessible :due_date, :name, :day_class_id
 
   has_many :student_assignments
   has_many :students, through: :student_assignments

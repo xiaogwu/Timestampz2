@@ -2,6 +2,7 @@ class AssignmentsController < ApplicationController
 
   def index
     @assignments = Assignment.all
+    @day_classes = DayClass.all
   end
 
   def new

@@ -20,7 +20,14 @@ class DayClass < ActiveRecord::Base
   belongs_to :school
   belongs_to :teacher
 
+  before_save :save_name
+
   def get_name
     "#{self.teacher.last_name}'s #{self.period} period #{self.subject}"
+  end
+
+  private
+  def save_name
+    self.name = self.get_name
   end
 end
