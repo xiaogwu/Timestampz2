@@ -22,6 +22,11 @@ class DayClass < ActiveRecord::Base
 
   before_save :save_name
 
+  validates_presence_of :subject
+  validates_presence_of :period
+
+  scope :by_name, order(:name)
+
   def get_name
     "#{self.teacher.last_name}'s #{self.period} period #{self.subject}"
   end

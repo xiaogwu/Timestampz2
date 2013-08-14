@@ -8,6 +8,8 @@ describe DayClass do
   it { should have_many :students }
   it { should belong_to(:school) }
   it { should belong_to :teacher }
+  it { should validate_presence_of :subject }
+  it { should validate_presence_of :period }
 
   describe '#get_name' do
     it 'generates a class name' do

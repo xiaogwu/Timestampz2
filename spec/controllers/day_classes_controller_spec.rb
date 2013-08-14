@@ -38,7 +38,7 @@ describe DayClassesController do
     end
 
     context 'incorrect params' do
-      it 'renders new' do
+      it 'flashes error' do
         DayClass.any_instance.stub(:save).and_return(nil)
         DayClass.any_instance.stub_chain(:errors, :full_messages).and_return(["Error"])
         post('create', @params)

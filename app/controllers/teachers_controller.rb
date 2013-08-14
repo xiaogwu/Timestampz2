@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
       redirect_to new_school_day_class_path
     else
       @errors.uniq!
-      flash[:errors] = "Some teachers fields had errors. Please check the School tab
+      flash[:errors] = "Some teacher fields had errors. Please check the School tab
                     to see if any teachers were not added."
       redirect_to new_school_day_class_path
     end  
