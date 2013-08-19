@@ -10,8 +10,8 @@ Timestampz2::Application.routes.draw do
   resources :groups
 
   resources :schools, shallow: true do
-    resources :teachers
-    resources :day_classes
+    resources :teachers, except: [:show, :index]
+    resources :day_classes, except: [:show, :index]
   end
 
   resources :students
