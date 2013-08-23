@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
-gem 'rails'
+ruby '2.0.0'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.0'
 gem 'rake'
 gem 'activeresource'
 # Bundle edge Rails instead:
@@ -21,6 +22,7 @@ gem 'pry-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'devise'
+gem 'warden', git: 'https://github.com/hassox/warden.git'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -29,7 +31,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt-ruby'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

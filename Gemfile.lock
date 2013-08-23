@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/hassox/warden.git
+  revision: 15f5dfe7444422a82ef17877d69368cb50344803
+  specs:
+    warden (1.2.3)
+      rack (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -207,8 +214,6 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    warden (1.2.2)
-      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -237,7 +242,7 @@ DEPENDENCIES
   pry
   pry-rails
   quiet_assets
-  rails
+  rails (= 4.0.0)
   rails-boilerplate
   rake
   rspec-rails
@@ -247,3 +252,4 @@ DEPENDENCIES
   spork
   thin
   uglifier
+  warden!
